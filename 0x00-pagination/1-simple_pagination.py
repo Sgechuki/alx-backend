@@ -44,4 +44,4 @@ class Server:
         assert type(page) == int and page > 0
         assert type(page_size) == int and page_size > 0
         start_idx, end_idx = index_range(page, page_size)
-        return self.dataset()[start_idx:end_idx + 1]
+        return self.dataset()[start_idx:end_idx]
