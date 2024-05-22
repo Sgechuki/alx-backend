@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Task 0: Basic dictionary
+Task 2: LIFO caching
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class BasicCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """
     inherits from BaseCaching and is a caching system
     """
@@ -23,6 +23,9 @@ class BasicCache(BaseCaching):
         if key is None or item is None:
             pass
         else:
+            if len(self.cache_data) == BaseCaching.MAX_ITEMS:
+                first_key = self.cache_data.popitem()[0]
+                print("DISCARD: {}".format(first_key))
             self.cache_data[key] = item
 
     def get(self, key):

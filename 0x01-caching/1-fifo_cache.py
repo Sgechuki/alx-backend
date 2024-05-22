@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Task 0: Basic dictionary
+Task 1: FIFO caching
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class BasicCache(BaseCaching):
+class FIFOCache(BaseCaching):
     """
     inherits from BaseCaching and is a caching system
     """
@@ -24,6 +24,10 @@ class BasicCache(BaseCaching):
             pass
         else:
             self.cache_data[key] = item
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                first_key = next(iter(self.cache_data))
+                self.cache_data.pop(first_key)
+                print("DISCARD: {}".format(first_key))
 
     def get(self, key):
         """
