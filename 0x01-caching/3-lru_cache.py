@@ -23,7 +23,7 @@ class LRUCache(BaseCaching):
         the item value for the key key
         """
         if key is None or item is None:
-            pass
+            return
         if key not in self.cache_data:
             if len(self.cache_data) == BaseCaching.MAX_ITEMS:
                 first_key = self.cache_data.popitem(True)[0]
